@@ -35,14 +35,48 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 **Procedure**
 
 /* write all the steps invloved */
+```
+1.Type the program in Quartus software.
 
+2.Compile and run the program.
+
+3.Generate the RTL schematic and save the logic diagram.
+
+4.Create nodes for inputs and outputs to generate the timing diagram.
+
+5.For different input combinations generate the timing diagram.
+```
 **PROGRAM**
+Developed by: Pugazhenthi S
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
-
+RegisterNumber: 212224240120
+```
+module SRFLIPFLOPUSINGCASE(q, q_bar, s,r, clk, reset);//SR Flip Flop Behavioral Level using ‘case’ 
+  input s,r,clk, reset;
+  output reg q;
+  output q_bar;
+ 
+  always@(posedge clk) begin // for synchronous reset
+    if(!reset)       q <= 0;
+    else 
+  begin
+      case({s,r})       
+	     2'b00: q <= q;     
+		  2'b01: q <= 1'b0;
+		  2'b10: q <= 1'b1;
+		  2'b11: q <= 1'bx;
+		  
+      endcase
+    end
+  end
+  assign q_bar = ~q;
+endmodule
+```
 **RTL LOGIC FOR FLIPFLOPS**
+![image](https://github.com/Priyanghaofficial/SR-FLIPFLOP-USING-CASE/assets/147121154/126a14ac-863a-46a7-abc0-3b9c529444c0)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![image](https://github.com/Priyanghaofficial/SR-FLIPFLOP-USING-CASE/assets/147121154/00f49522-2dcf-450e-a728-bcb83e9146e8)
 
 **RESULTS**
+Therefore the verilog HDL code has been successfully executed.
